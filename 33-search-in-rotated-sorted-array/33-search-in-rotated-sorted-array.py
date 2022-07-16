@@ -15,7 +15,6 @@ class Solution:
                 left = mid + 1
             else:
                 right = mid - 1
-            
         return -1
 
 def newIndex(oldIndex,pivot,length):
@@ -24,7 +23,6 @@ def newIndex(oldIndex,pivot,length):
 def findMinIndex(nums):
     left = 0
     right = len(nums)-1
-
     
     while(left<=right):
         mid = (left + right) // 2
@@ -38,4 +36,3 @@ def findMinIndex(nums):
             right = mid - 1
         else:                        #search right
             left = mid + 1
-    
