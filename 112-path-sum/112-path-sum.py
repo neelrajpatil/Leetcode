@@ -9,17 +9,8 @@ class Solution:
         if root == None:
             return False
         
-        #leaf node
-        if root.left == None and root.right == None:
-            #Found root-to-leaf path
-            if root.val == targetSum:
-                return True
-            #Did not find root-to-leaf path
-            return False
-        
-        if root.right == None:
-            return self.hasPathSum(root.left, targetSum-root.val)
-        if root.left == None:
-            return self.hasPathSum(root.right, targetSum-root.val)
+        #Found root-to-leaf path
+        if root.left == None and root.right == None and root.val == targetSum:
+            return True
         
         return self.hasPathSum(root.left, targetSum-root.val) or self.hasPathSum(root.right, targetSum-root.val)
