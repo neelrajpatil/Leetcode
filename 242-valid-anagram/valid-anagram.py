@@ -3,10 +3,23 @@ class Solution:
         if len(s) != len(t):
             return False
 
-        ## Approach 2:
-        if Counter(s) == Counter(t):
-            return True
-        return False
+        ## Approach 3:
+        s_dict = {}
+        t_dict = {}
+
+        for i in range(len(s)):
+            s_dict[s[i]] = s_dict.get(s[i],0) + 1
+            t_dict[t[i]] = t_dict.get(t[i],0) + 1
+        
+        for char in s_dict:
+            if s_dict.get(char,0) != t_dict.get(char,0):
+                return False
+        return True
+
+        # ## Approach 2:
+        # if Counter(s) == Counter(t):
+        #     return True
+        # return False
 
         # ## Approach 1: Count chars in one string, decrement from other string.
         # s_dict = dict() 
