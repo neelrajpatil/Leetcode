@@ -21,8 +21,9 @@ class Solution:
         Assumptions
 
         """
-        # Approach 1: freq counter in one pass, get top k frequencies in one pass of dict
-        # Time Complexity O(n)
+        # Approach 1: freq counter in one pass, sort freq_counter, get top k
+        # Time Complexity O(n Log n)
+        # Space Complexity O(n Log n)
 
         freq_c = defaultdict(int) # {value:count}
         # create freq counter
