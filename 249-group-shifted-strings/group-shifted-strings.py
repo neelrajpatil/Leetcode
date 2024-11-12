@@ -18,7 +18,7 @@ class Solution:
             - 
         """
 
-        # Approach 1: Time O(n) Space O(n)
+        # Approach 1: Time O(strings.length * strings[i].length) Space O(strings.length * strings[i].length)
         # dict {tuple(ord(eachletter)) : []}
         groups = defaultdict(list)
         # iterate through the list
