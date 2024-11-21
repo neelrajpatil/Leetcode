@@ -43,18 +43,37 @@
 
 class Solution:
     def depthSum(self, nestedList: List[NestedInteger]) -> int:
-        def process_element(element: 'NestedInteger', depth: int) -> int:
-            if element.isInteger():
-                return element.getInteger() * depth
-            else:
-                total = 0
-                for item in element.getList():
-                    total += process_element(item, depth + 1)
-                return total
         
-        total_sum = 0
-        for nested in nestedList:
-            total_sum += process_element(nested, 1)
-        return total_sum
+        # BFS Solution
+        res = 0
+        queue = collections.deque()
+        for curr in nestedList:
+            queue.append((1, curr))
+        
+        while queue:
+            depth, element = queue.popleft()
+            if element.isInteger():
+                res += element.getInteger() * depth
+            else:
+                for curr in element.getList():
+                    queue.append((depth+1, curr))
+        
+        return res
+        
+        
+        # DFS SOLUTION
+        # def process_element(element: 'NestedInteger', depth: int) -> int:
+        #     if element.isInteger():
+        #         return element.getInteger() * depth
+        #     else:
+        #         total = 0
+        #         for item in element.getList():
+        #             total += process_element(item, depth + 1)
+        #         return total
+        
+        # total_sum = 0
+        # for nested in nestedList:
+        #     total_sum += process_element(nested, 1)
+        # return total_sum
 
         
