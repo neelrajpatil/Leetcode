@@ -6,38 +6,34 @@
 #         self.right = right
 class Solution:
     def verticalOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        if not root:
-            return []
+        """
 
-        delta_val = defaultdict(list)
-        max_x = float('-inf')
+        Test Cases
+            
+
+        """
+        if root == None:
+            return []
+        # dict mapping delta to values
+        delta_to_vals = defaultdict(list)
         min_x = float('inf')
-        
+        max_x = float('-inf')
         # BFS
         queue = collections.deque([(0,root)])
-
         while len(queue) > 0:
-            # add curr to delta_val
             x, node = queue.popleft()
-            delta_val[x].append(node.val)
-            min_x = min(x, min_x)
-            max_x = max(x, max_x)
+            min_x = min(min_x, x)
+            max_x = max(max_x, x)
 
-            # append children to queue
+            delta_to_vals[x].append(node.val)
+            
             if node.left:
                 queue.append((x-1,node.left))
             if node.right:
                 queue.append((x+1,node.right))
-
-
-
-        # Compute answer
-        res = []
-
+    
+        # iterate thru dict for ans range(min_x, max_x)
+        result = []
         for i in range(min_x,max_x+1):
-            res.append(delta_val[i])
-        return res
-
-
-
-        
+            result.append(delta_to_vals[i])
+        return result
