@@ -8,7 +8,7 @@ class Solution:
             points = [[1,3],[-2,2]], k = 1 -> [[-2,2]]
         """
 
-        # # Approach 1: min_heap. Store all N points in heap
+        # # Approach 1: min_heap. Store all N points in heap Time O(n) Space O(n)
 
         # heap = []
         # # Calc euc distance for all points
@@ -23,7 +23,7 @@ class Solution:
         # return [heapq.heappop(heap)[1:] for i in range(k)]
 
 
-        # Approac 2: max_heap. Only store k points in heap
+        # Approac 2: max_heap. Only store k points in heap. Time O(n) Space O(k)
 
         # store all distances in array
         max_heap = []
