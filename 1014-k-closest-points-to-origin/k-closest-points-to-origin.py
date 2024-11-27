@@ -8,39 +8,37 @@ class Solution:
             points = [[1,3],[-2,2]], k = 1 -> [[-2,2]]
         """
 
-        # # Approach 1: min_heap. Store all N points in heap Time O(n) Space O(n)
+        # Approach 1: min_heap. Store all N points in heap Time O(n) Space O(n)
 
-        # heap = []
-        # # Calc euc distance for all points
-        # for pt in points:
-        #     proxy_dist = pt[0] ** 2 + pt[1]**2 # not taking the sqrt to keep it simple
-        #     heap.append([proxy_dist, pt[0],pt[1]])
-
-        # # Create min_heap storing all points in it 
-        # heapq.heapify(heap)
-
-        # # Pop k points from the heap
-        # return [heapq.heappop(heap)[1:] for i in range(k)]
-
-
-        # Approac 2: max_heap. Only store k points in heap. Time O(n) Space O(k)
-
-        # store all distances in array
-        max_heap = []
+        heap = []
+        # Calc euc distance for all points and push to heap
         for pt in points:
-            dist = -(pt[0]**2+pt[1]**2) # keeping negative since we are using a default min_heap to store a max_heap. Also not doing sqrt since we will get the same answer anyways
-            
-            if len(max_heap) < k:
-                heapq.heappush(max_heap, [dist,pt[0],pt[1]])
-            else:
-                if max_heap[0][0] < dist:
-                    heapq.heappop(max_heap)
-                    heapq.heappush(max_heap, [dist,pt[0],pt[1]])
-            
-            # heapq.heapify(max_heap)
+            proxy_dist = pt[0] ** 2 + pt[1]**2 # not taking the sqrt to keep it simple
+            heapq.heappush(heap,[proxy_dist, pt[0],pt[1]])
 
-        # return everything from array
-        return [node[1:] for node in max_heap]
+
+        # Pop k points from the heap
+        return [heapq.heappop(heap)[1:] for i in range(k)]
+
+
+        # # Approac 2: max_heap. Only store k points in heap. Time O(n) Space O(k)
+
+        # # store all distances in array
+        # max_heap = []
+        # for pt in points:
+        #     dist = -(pt[0]**2+pt[1]**2) # keeping negative since we are using a default min_heap to store a max_heap. Also not doing sqrt since we will get the same answer anyways
+            
+        #     if len(max_heap) < k:
+        #         heapq.heappush(max_heap, [dist,pt[0],pt[1]])
+        #     else:
+        #         if max_heap[0][0] < dist:
+        #             heapq.heappop(max_heap)
+        #             heapq.heappush(max_heap, [dist,pt[0],pt[1]])
+            
+        #     # heapq.heapify(max_heap)
+
+        # # return everything from array
+        # return [node[1:] for node in max_heap]
 
 
 
