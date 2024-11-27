@@ -20,7 +20,7 @@ class Solution:
         # handle edge cases
         if x == 0 and n >= 1:
             return 0
-        if x != 0 and n == 0:
+        if n == 0:
             return 1
 
         
