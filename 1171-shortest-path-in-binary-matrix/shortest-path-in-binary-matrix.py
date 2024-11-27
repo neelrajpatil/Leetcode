@@ -36,7 +36,7 @@ class Solution:
             for d_x, d_y in directions: # 1,1
                 curr_x = x + d_x # 1
                 curr_y = y + d_y # 1
-                if 0 <= curr_x and curr_x < n and curr_y < n and 0 <= curr_y  and (curr_x,curr_y) not in visited and grid[curr_x][curr_y] != 1:
+                if 0 <= curr_x < n and 0 <= curr_y < n  and (curr_x,curr_y) not in visited and grid[curr_x][curr_y] != 1:
                     queue.append([curr_x,curr_y,length+1])
                     visited.add((curr_x,curr_y))
 
