@@ -22,8 +22,6 @@ class Solution:
             return 0
         if x != 0 and n == 0:
             return 1
-        if x == 0 and n == 0:
-            return 1
 
         
 
